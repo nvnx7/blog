@@ -6,7 +6,7 @@ tags:
 ---
 
 
-If you've been dipping your toes in the awesome Rust language, you must've encountered the clone() method which is present in almost every object out there to make a  deep copy of it. It comes from the implementation of Clone trait for a struct.
+If you've been dipping your toes in the awesome Rust language, you must've encountered the `clone()` method which is present in almost every object out there to make a  deep copy of it. It comes from the implementation of Clone trait for a struct.
 
 But, you must also have encountered this Copy trait if you ventured a bit into docs deeper or in an error message. Copy also allows some type to replicate its instances. So, what's the deal here with Clone and Copy traits? That is exactly what this article is about.
 
