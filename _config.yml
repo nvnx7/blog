@@ -7,6 +7,10 @@ title: Naveen
 subtitle: 'shadowy super coder'
 description: 'Blockchain and Ethereum engineer'
 keywords:
+- solidity
+- ethereum
+- blockchain
+- rust
 author: Naveen Sahu
 language: en
 timezone: ''
@@ -44,16 +48,17 @@ post_asset_folder: false
 relative_link: false
 future: true
 highlight:
-  enable: true
+  enable: false
   line_number: true
   auto_detect: false
   tab_replace: ''
   wrap: true
   hljs: false
 prismjs:
-  enable: false
+  enable: true
   preprocess: true
-  line_number: true
+  line_number: false
+  line_threshold: 0
   tab_replace: ''
 
 # Home page setting
