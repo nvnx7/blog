@@ -1,5 +1,5 @@
 ---
-title: 'Ethereum Yellow Paper Mathematics Deciphered: Part 0'
+title: 'Ethereum Yellow Paper Mathematics Deciphered | Part 0: Conventions'
 date: 2022-07-19 19:19:54
 tags:
 - ethereum
@@ -29,7 +29,7 @@ These are usually used to constraint the values that can be assigned to componen
 conveys that "$a$ must be in set $X$ **and** $b$ must be in set $Y$".
 - $\forall$ denotes universal quantification i.e. for all elements in a set.
 
-Note that paper, almost everywhere uses **equivalence** (using $\equiv$), which is not same as equality (using $=$). In this context, $\equiv$ is used to define an expression or something being identical to other thing.
+Note that the paper, almost everywhere uses **equivalence** (using $\equiv$), which is not same as equality (using $=$). In this context, $\equiv$ is used to define an expression or something being identical to other thing.
 
 Following are the conventions used for choosing a particular symbol and example below:
 
@@ -57,8 +57,11 @@ $\delta$: No. of items required on stack for an operation
 
 ## Dynamic length sequences denoted by bold lower case letters:
 $\bf{o}$: output data of a message call  
-Last item of a given sequence $\bf{x}$ is $\ell(\bf{x})$:  
-$\ell(\bf{x}) \equiv \bf{x}[||\bf{x}|| - 1]$ ($||\bf{x}||$ denotes length of sequence)
+Last item of a given sequence, e.g. a byte sequence, $\mathbf{x}$ is $\ell(\mathbf{x})$:
+$$
+\ell(\mathbf{x}) \equiv \mathbf{x}[\lVert \mathbf{x} \rVert - 1]
+$$  
+where, $\lVert \mathbf{x} \rVert$ denotes length of the sequence $\mathbf{x}$.
 
 ## Square brackets to index into and reference individual items or subsequences of a sequence:
 $\boldsymbol{\mu}_{\bf{s}}[i]$: i-th item of the stack  
