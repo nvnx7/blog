@@ -4,7 +4,7 @@ date: 2022-07-19 19:19:54
 tags:
 - ethereum
 - yellow-paper
-excerpt: 'Part of the series deciphering all things mathematics in the Ethereum Yellow Paper.'
+excerpt: 'This post is part of series of articles that try to decipher mathematics in ethereum yellow paper, so that it makes sense to the reader and convey their meaning'
 ---
 
 
