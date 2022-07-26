@@ -5,8 +5,8 @@ tags:
 - ethereum
 - yellow-paper
 excerpt: 'This post is part of series of articles that try to decipher mathematics in ethereum yellow paper, so that it makes sense to the reader and convey their meaning'
+mathjax: true
 ---
-
 
 # Introduction
 Ethereum is, by far, the most popular blockchain, which it owes not only to its technical attributes but also to its economical and most decentralized attributes. This beautiful machinery boils to numerous mathematical artifacts, laid out in the [Yellow Paper](https://ethereum.github.io/yellowpaper/paper.pdf), each moving part pertaining to some equation.
@@ -101,5 +101,7 @@ $F_{Berlin} = 12244000$
 $F_{London} = 12965000$  
 $F_{Arrow Glacier} = 13773000$  
 $F_{Gray Glacier} = 15050000$  
+
+Another thing to notice is the tags ($(1)$, $(2)$, $(3)$ etc.) used in the posts of this series correspond to same tags used in the original paper for the same equivalence/equality. However, the tags used in these posts might not necessarily be in the same order as in the original paper. I may introduce later equivalence/equality before the former ones. But they will be tagged with same number as in the paper. Additionally, I may introduce some equivalence/equality that are not in the original paper. Their tags will be denoted by roman numbers ($(i)$, $(ii)$, $(iii)$ etc.) to distinguish them from those in the paper.
 
 And this is it for the pilot of this series. I'm not expecting you to understand exhaustive meaning of everything above, it will be uncovered later. This will however, serve as great reference for the rest of the series.
