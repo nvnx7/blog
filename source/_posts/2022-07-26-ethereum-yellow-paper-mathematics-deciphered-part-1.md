@@ -117,16 +117,16 @@ the equivalence seems more obvious. Additionally, $\Omega$ (and hence $\Pi$) is 
 As said before, the world state, $\boldsymbol{\sigma}$, is a mapping between addresses and their account states. The account state is a RLP-serialized data-structure. For an address $a$, the account state can be denoted by $\boldsymbol{\sigma}[a]$ - similar to accessing a value in a map by a key (here, $a$) in programming.
 
 An account state $\boldsymbol{\sigma}[a]$ comprises of the following components -
-- **nonce**, $\boldsymbol{\sigma}[a]_\mathrm{n}$: Nonce is number of transactions sent by this address, if it is an EOA, or it is number of contract-creations made by this address if it is a contract.
-- **balance**, $\boldsymbol{\sigma}[a]_\mathrm{b}$: Number of Wei owned by this address.
+- $\mathbf{nonce}$ ($\boldsymbol{\sigma}[a]_\mathrm{n}$): Nonce is number of transactions sent by this address, if it is an EOA, or it is number of contract-creations made by this address if it is a contract.
+- $\mathbf{balance}$ ($\boldsymbol{\sigma}[a]_\mathrm{b}$): Number of Wei owned by this address.
 
-- **storageRoot**, $\boldsymbol{\sigma}[a]_\mathrm{s}$: A 256-bit hash of root node of a [Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/) data-structure. This MPT structure holds contents of this account. The contents in the MPT are encoded mapping of 256-bit hash of 256-bit keys (aka storage slot) to RLP-encoded 256-bit integers as values (representing the account content). In simple terms, you might know this "content" as contract storage. As expected, only contract accounts can have non-empty storage. EOAs always have empty storage.
+- $\mathbf{storageRoot}$ ($\boldsymbol{\sigma}[a]_\mathrm{s}$): A 256-bit hash of root node of a [Merkle Patricia Trie](https://ethereum.org/en/developers/docs/data-structures-and-encoding/patricia-merkle-trie/) data-structure. This MPT structure holds contents of this account. The contents in the MPT are encoded mapping of 256-bit hash of 256-bit keys (aka storage slot) to RLP-encoded 256-bit integers as values (representing the account content). In simple terms, you might know this "content" as contract storage. As expected, only contract accounts can have non-empty storage. EOAs always have empty storage.
 
-- **codeHash**, $\boldsymbol{\sigma}[a]_\mathrm{c}$: The hash of the EVM code (aka bytecode) of this account. Remember that only contracts have bytecode, EOAs have empty bytecode. Thus, if $\mathbf{b}$ is the bytecode then,  $\boldsymbol{\sigma}[a]_\mathrm{c} = \mathtt{KEC}(\mathbf{b})$. And $\mathbf{b} = ()$, always for an EOA account - meaning **codeHash** for an EOA is always hash of an empty string.
+- $\mathbf{codeHash}$ ($\boldsymbol{\sigma}[a]_\mathrm{c}$): The hash of the EVM code (aka bytecode) of this account. Remember that only contracts have bytecode, EOAs have empty bytecode. Thus, if $\mathbf{b}$ is the bytecode then,  $\boldsymbol{\sigma}[a]_\mathrm{c} = \mathtt{KEC}(\mathbf{b})$. And $\mathbf{b} = ()$, always for an EOA account - meaning $\mathbf{codeHash}$ for an EOA is always hash of an empty string.
 
 ![A diagram showing the make up of an account](https://ethereum.org/static/19443ab40f108c985fb95b07bac29bcb/302a4/accounts.png "A diagram showing the make up of an account")
 
-Paper defines a function $L_I$ that given a key, $k$ and a value, $v$ outputs suitable item for inserting into the account storage Merkle Patricia Trie. In this regard, $k$ must be keccak-256 hashed and $v$ must be RLP-encoded, as discussed earlier above in **storageRoot** component. Hence,
+Paper defines a function $L_I$ that given a key, $k$ and a value, $v$ outputs suitable item for inserting into the account storage Merkle Patricia Trie. In this regard, $k$ must be keccak-256 hashed and $v$ must be RLP-encoded, as discussed earlier above in $\mathbf{storageRoot}$ component. Hence,
 
 $$
 L_I((k, v)) \equiv (\mathtt{KEC}(k), \mathtt{RLP}(v)) \tag{8}
@@ -152,7 +152,7 @@ $$
 
 _Note that in the equivalence above, the subscript $\mathbf{s}$ (bolder, on LHS) is different from subscript $\mathrm{s}$ (on RHS)_
 
-We already know that $\boldsymbol{\sigma}[a]\_{\mathrm{s}}$ is the **storageRoot** defined earlier. If you look carefully, $\mathtt{TRIE}( L_I^*( \boldsymbol{\sigma}[a]_{\mathbf{s}} ) )$ is actually defines the same Merkle Patricia Trie whose root's hash is **storageRoot**. How?
+We already know that $\boldsymbol{\sigma}[a]\_{\mathrm{s}}$ is the $\mathbf{storageRoot}$ defined earlier. If you look carefully, $\mathtt{TRIE}( L_I^*( \boldsymbol{\sigma}[a]_{\mathbf{s}} ) )$ is actually defines the same Merkle Patricia Trie whose root's hash is $\mathbf{storageRoot}$. How?
 
 $\boldsymbol{\sigma}[a]_{\mathbf{s}}$ (bolder $\mathbf{s}$) seems to represent a list/series of contract's storage key-value pairs (raw integer key and raw storage content) corresponding to an account, $a$. The $L_I^*$  then hashes each of the keys and RLP-encodes each of the values. Just as defined at $(iii)$. And with these encoded inputs the Merkle Patricia Trie is constructed with $\mathtt{TRIE}$ function.
 
@@ -190,7 +190,7 @@ $$
 
 Remember, that the world-state is a mapping from account to account states. $L_\mathrm{S}$ function is basically squishing everything belonging to an account state and yields a set of these values for all accounts (i.e. $\forall a$) except non-existent accounts (i.e. $\mathbf{\sigma}[a] \neq \varnothing $). 
 
-This set of items, yielded by $L_\mathrm{S}$ function, when put into the Merkle Patricia Trie (using $\mathtt{TRIE}$ function), provides a short identity for the world-state. This identity is nothing but the hash of root of this trie. Keep in mind that this MPT is not the same one as defined for **storageRoot** for a single account. This MPT encompasses all the accounts with it's contents. You might know this as "State Trie".
+This set of items, yielded by $L_\mathrm{S}$ function, when put into the Merkle Patricia Trie (using $\mathtt{TRIE}$ function), provides a short identity for the world-state. This identity is nothing but the hash of root of this trie. Keep in mind that this MPT is not the same one as defined for $\mathbf{storageRoot}$ for a single account. This MPT encompasses all the accounts with it's contents. You might know this as "State Trie".
 
 It is assumed that account state can either be non-existent or valid if existent. Mathematically,
 $$
