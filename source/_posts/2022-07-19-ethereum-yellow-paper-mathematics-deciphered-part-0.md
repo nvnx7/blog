@@ -84,8 +84,8 @@ function $f$, the $f^*$ denotes similar element-wise version of $f$. Therefore:
 $f^*((x_0, x_1, x_2,...))$ = $(f(x_0), f(x_1), f(x_2)...)$
 
 ## Miscellaneous:
-  - A particular set of functions in the paper are denoted by $L$ (e.g. $L_I, L_T, L_S$). These $L$ functions are referred as "collapse-functions" in the paper. Because it, sort of, collapses/squishes multiple components of a complex entity (like transaction tuple) to yield an output.  
-  This output (seemingly, as in paper) is suitable for RLP encoding (i.e.suitable to be fed into $\tt{RLP}$). For example, given a transaction tuple, $T$, it is made suitable for RLP encoding by $L_T(T)$ function. $L_T$ is needed rather than directly feeding $T$ to $\tt{RLP}$ because, it is $L_T$ that dictates what components of $T$ (_type_, _nonce_, _gasPrice_, _to_ etc.) should be part encoding and in what order they should be encoded. This is so that encoding scheme remains uniform throughout.
+  - A particular set of functions in the paper are denoted by $L$ (e.g. $L_I, L_T, L_S$). These $L$ functions are referred as "collapse-functions" in the paper. Because it, sort of, collapses/squishes multiple components of a complex entity (like transaction tuple) to yield an output.   
+  The $L$ produces this collapsed output mostly by RLP-encoding and/or keccak hashing of constituents of complex entity. For example, given a transaction tuple, $T$, the corresponding collapse function is $L_T$ function. $L_T(T)$ operation basically concatenates the transaction components/constituents (_type_, _nonce_, _gasPrice_, _to_ etc.) in particular order in an encoding and dictates what components to include in encoding depending on type of transaction.
 
 
   - The **first block number** of a particular fork is specially denoted by $F$ with a subscript name of fork. Below are forks with their first block number:  
