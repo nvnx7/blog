@@ -1,6 +1,6 @@
 ---
 title: 'Ethereum Yellow Paper Mathematics Deciphered | Part 2: Transaction'
-date: 2022-07-28 11:41:12
+date: 2022-08-05 12:44:12
 tags:
 - ethereum
 - yellow-paper
