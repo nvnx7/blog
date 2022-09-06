@@ -19,7 +19,7 @@ As said in previous part, transactions are what that drive the ethereum state ma
 These are cryptographically signed instructions are signed by the sender which can only be an EOA, not a contract. This may seem confusing to Solidity developers. Since a contract can also call other contract & be a sender (`msg.sender`) in context of the called contract - right? Well, yes but the originator of the transaction (`tx.origin`) i.e. the entity which initialized the the transaction in the first place is always an EOA. A transaction can either result in a message call to some existing contract or creation of a new contract.
 
 ### Types
-The Berlin version of the protocol introduced to distinct transaction types (see [EIP2718](https://eips.ethereum.org/EIPS/eip-2718) and [EIP2930](https://eips.ethereum.org/EIPS/eip-2930)):
+The Berlin version of the protocol introduced two distinct transaction types (see [EIP2718](https://eips.ethereum.org/EIPS/eip-2718) and [EIP2930](https://eips.ethereum.org/EIPS/eip-2930)):
 - **0** (legacy): The legacy transactions, before the introduction of the new transaction types.
 - **1** ([EIP2930](https://eips.ethereum.org/EIPS/eip-2930)): These transactions specify additional fields in the transaction tuple (see below).
 
